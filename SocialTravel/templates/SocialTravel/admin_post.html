@@ -4,7 +4,14 @@
 
 {% block principal %}
 
-<h1>Hola Esto es un template con herencia</h1>
+<h1>Administración Post</h1>
+{% if form %}
+<form action="{% url 'agregar-post' %}" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Agregar">
+</form>
+{% endif %}
 
 <ul>
     {%  for post in posts  %}
