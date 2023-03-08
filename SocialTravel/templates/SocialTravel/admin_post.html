@@ -1,0 +1,26 @@
+{% extends "SocialTravel/base.html" %}
+
+{% load static %}
+
+{% block principal %}
+
+{% if form %}
+<h1>Admin de Posts</h1>
+    <form action="{% url 'agregar-post' %}" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Agregar">
+    </form>
+{% else %}
+<h1>Resultados de la Busqueda: </h1>
+{% endif %}
+
+<ul>
+    {%  for post in posts  %}
+    <li> {{post.id}} - {{ post.carousel_caption_title }} - {{ post.heading}}</li>
+    {% endfor %}
+</ul>
+
+
+
+{% endblock %}
