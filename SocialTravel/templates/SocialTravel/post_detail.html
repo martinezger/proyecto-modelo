@@ -1,0 +1,12 @@
+{% extends "SocialTravel/base.html" %}
+
+{% load static %}
+
+{% block principal %}
+<ul>
+    <li> {{post.id}} - {{ post.carousel_caption_title }} - {{ post.heading}}
+        <a href="">Actualizar</a>
+        <a href="">Borrar</a>   
+    </li>
+</ul> 
+{% endblock %}

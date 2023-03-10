@@ -15,13 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from SocialTravel.views import index, mostrar_post, agregar_post, buscar_post
+from SocialTravel.views import( index, PostList, PostDetail, PostUpdate, PostDelete, PostCreate, PostSearch
+)
 
 urlpatterns = [
     path('', index, name="index"),
     path('admin/', admin.site.urls),
-    path('mis-posts/', mostrar_post, name="mis-posts"),
-    path('mis-posts/agregar', agregar_post, name="agregar-post"),
-    path('mis-post/buscar', buscar_post, name="buscar-post"),
+    path('post/list', PostList.as_view(), name="post-list"),
+    path('post/<pk>/detail', PostDetail.as_view(), name="post-detail"),
+    path('post/<pk>/update', PostUpdate.as_view(), name="post-update"),
+    path('post/<pk>/delete', PostDelete.as_view(), name="post-delete"),
+    path('post/create', PostCreate.as_view(), name="post-create"),
+    path('post/search', PostSearch.as_view(), name="post-search"),
 ]
 
