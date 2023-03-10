@@ -1,0 +1,24 @@
+{% extends "SocialTravel/base.html" %}
+
+{% load static %}
+
+{% block principal %}
+<main>
+    {% if title %}
+        <h1>{{ title }}</h1>
+    {% else %}
+        <h1>Mis Posts</h1>
+    {% endif %}
+    <ul>
+        {%  for post in object_list  %}
+        <li style="margin-top: 5px;"> 
+            {{post.id}} - {{post.creado_el}} - {{ post.carousel_caption_title }} - {{ post.heading}}  
+            <a href="{% url 'post-detail' post.id %}" class="btn btn-primary btn-sm">Detalle</a>
+            <a href="{% url 'post-update' post.id %}" class="btn btn-secondary btn-sm">Actulizar</a>
+            <a href="{% url 'post-delete' post.id %}" class="btn btn-danger btn-sm">Borrar</a>
+        </li>
+
+        {% endfor %}
+    </ul>
+</main>
+{% endblock %}

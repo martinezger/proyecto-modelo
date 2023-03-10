@@ -61,13 +61,16 @@
             <a class="nav-link active" aria-current="page" href="{% url  'index' %}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'mis-posts' %}">Mis Posts</a>
+            <a class="nav-link" href="{% url 'post-list' %}">Mis Posts</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'post-create' %}">Nuevo Post</a>
           </li>
           <!-- <li class="nav-item">
             <a class="nav-link disabled" href="https://getbootstrap.com/docs/5.0/examples/carousel/#" tabindex="-1" aria-disabled="true">Disabled</a>
           </li> -->
         </ul>
-        <form action="{% url 'buscar-post' %}" class="d-flex">
+        <form action="{% url 'post-search' %}" class="d-flex">
           <input class="form-control me-2" name="criterio" type="search" placeholder="Buscar un post" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Buscar</button>
         </form>

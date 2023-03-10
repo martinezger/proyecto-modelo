@@ -6,6 +6,6 @@ class Post(models.Model):
     heading = models.CharField(max_length=15)
     description = models.CharField(max_length=120)
     un_campo = models.CharField(max_length=10)
-
+    creado_el = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return f"{self.id} - {self.carousel_caption_title}"

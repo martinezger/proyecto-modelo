@@ -1,0 +1,15 @@
+{% extends "SocialTravel/base.html" %}
+
+{% load static %}
+
+{% block principal %}
+<h1>Detalle del post</h1>
+<div>
+    <ul> 
+        <li> {{ object.id}}</li>
+        <li> {{ object.carousel_caption_title }} </li> 
+        <li> {{ object.heading}} </li>
+    </ul>
+</div>
+
+{% endblock %}

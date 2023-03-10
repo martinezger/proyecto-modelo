@@ -1,6 +1,9 @@
 from SocialTravel.models import Post
-for _ in range(0,1000):
-    Post(carousel_caption_title="Un Carousel Title", 
+
+a = ["a","b","c","d"]
+
+for _ in range(0,4):
+    Post(carousel_caption_title=a[_], 
     carousel_caption_description="Un carousel descript",
     heading="Mi viaje",
     description="una description",
