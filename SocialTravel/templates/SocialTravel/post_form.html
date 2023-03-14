@@ -3,9 +3,11 @@
 {% load static %}
 
 {% block principal %}
-<form method="post">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="Actualizar">
-</form>
+<div style="margin-top: 20px">
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Actualizar">
+    </form>
+</div>
 {% endblock %}

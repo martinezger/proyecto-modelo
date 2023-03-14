@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.admin import User
 
 class Post(models.Model):
     carousel_caption_title = models.CharField(max_length=30)
@@ -6,6 +7,7 @@ class Post(models.Model):
     heading = models.CharField(max_length=15)
     description = models.CharField(max_length=120)
     un_campo = models.CharField(max_length=10)
+    publisher = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name="publisher") 
 
     def __str__(self):
         return f"{self.id} - {self.carousel_caption_title}"
