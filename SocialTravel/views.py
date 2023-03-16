@@ -5,7 +5,7 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 def index(request):
     return render(request, "SocialTravel/index.html")
@@ -15,28 +15,52 @@ class PostList(ListView):
     model = Post
     context_object_name = "posts"
 
+class PostMineList(PostList):
+
+    def get_queryset(self):
+        return Post.objects.filter(publisher=self.request.user.id).all()
 
 class PostDetail(DetailView):
     model = Post
     context_object_name = "post"
 
 
-class PostUpdate(LoginRequiredMixin, UpdateView):
+class PostUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
     success_url = reverse_lazy("post-list")
-    fields = '__all__'
+    fields = (
+        'carousel_caption_title', 'carousel_caption_description',
+        "heading", "description", "un_campo", "image",
+        )
+
+    def test_func(self):
+        user_id = self.request.user.id
+        post_id = self.kwargs.get("pk")
+        return Post.objects.filter(publisher=user_id,id=post_id).exists()
 
 
-class PostDelete(LoginRequiredMixin, DeleteView):
+class PostDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Post
     context_object_name = "post"
     success_url = reverse_lazy("post-list")
+
+    def test_func(self):
+        user_id = self.request.user.id
+        post_id = self.kwargs.get("pk")
+        return Post.objects.filter(publisher=user_id,id=post_id).exists()
 
 
 class PostCreate(LoginRequiredMixin, CreateView):
     model = Post
     success_url = reverse_lazy("post-list")
-    fields = '__all__'
+    fields = (
+        'carousel_caption_title', 'carousel_caption_description',
+        "heading", "description", "un_campo", "image",
+        )
+
+    def form_valid(self, form):
+        form.instance.publisher = self.request.user
+        return super().form_valid(form)
 
 
 class PostSearch(ListView):
