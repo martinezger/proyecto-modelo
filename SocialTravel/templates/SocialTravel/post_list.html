@@ -7,7 +7,7 @@
     {%  for post in posts  %}
     <li> {{post.id}} - {{ post.carousel_caption_title }} - {{ post.heading}}
          <a href="{% url 'post-detail' post.id %}">Detalle</a>
-         {% if user.is_authenticated %}
+         {% if user.is_authenticated and user.id == post.publisher.id %}
             <a href="{% url 'post-update' post.id %}">Actualizar</a>
             <a href="{% url 'post-delete' post.id %}">Borrar</a>   
          {% endif %}
