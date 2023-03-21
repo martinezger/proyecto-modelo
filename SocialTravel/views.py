@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from SocialTravel.models import Post
+from SocialTravel.models import Post, Profile
 from SocialTravel.forms import PostForm
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -75,3 +75,13 @@ class SignUp(CreateView):
 
 class Logout(LogoutView):
     template_name = "registration/logout.html"
+
+
+
+class ProfileUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Profile
+    success_url = reverse_lazy("post-list")
+    fields = '__all__'
+
+    def test_func(self):
+        return Profile.objects.filter(user=self.request.user).exists()

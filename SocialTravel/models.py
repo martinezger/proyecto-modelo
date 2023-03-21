@@ -17,3 +17,9 @@ class Post(models.Model):
 
     def __str__(self):
         return f"{self.id} - {self.carousel_caption_title}"
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    avatar = models.ImageField(upload_to="avatares", null=True, blank=True)
+
