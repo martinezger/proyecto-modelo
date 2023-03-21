@@ -70,9 +70,17 @@
             <li class="nav-item">
               <a class="nav-link" href="{% url 'post-create' %}">Nuevo Post</a>
             </li>
+
+            {% if user.profile %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'profile-update' user.id %}">editar Perfil</a>
+              <a class="nav-link" href="{% url 'profile-update' user.profile.id %}">editar Perfil</a>
             </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'profile-create' %}">Crear Perfil</a>
+            </li>
+            {% endif %}
+
             <li class="nav-item">
               <a class="nav-link" href="{% url 'logout' %}">{{ user.username }} | Salir</a>
             </li>
