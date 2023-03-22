@@ -9,7 +9,7 @@
       
         {% if posts %}
           <div class="carousel-item active">
-              <img src="{{posts.0.image_url}}">
+              <img src="{{posts.0.image_url}}"> 
             <div class="container">
               <div class="carousel-caption text-start">
                 <h1>{{posts.0.carousel_caption_title}}</h1>
@@ -57,7 +57,7 @@
 
       {% for post in posts %}
       <div class="col-lg-4">
-        <img src="{% static 'SocialTravel/assets/puente-corrientes-resistencia.jpeg' %}" height="144" width="144">
+        <img src="{{post.image_url}}" height="144" width="144">
         <h2>{{post.heading}}</h2>
         <p>{{post.description}}</p>
         <p><a class="btn btn-secondary" href="{%url 'post-detail' post.id %}">View details »</a></p>
