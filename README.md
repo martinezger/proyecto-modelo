@@ -1,5 +1,7 @@
 # Proyecto intermedio Django
 
+- bullet
+- bullet 2
 
 Para poder correr este proyecto es necesario tener instalado python 3.9 o superior. 
 
