@@ -8,7 +8,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 def index(request):
-    return render(request, "SocialTravel/index.html")
+    posts =  Post.objects.all().order_by("-creado_el")[:5]
+    return render(request, "SocialTravel/index.html", {"posts": posts})
 
 
 class PostList(ListView):
