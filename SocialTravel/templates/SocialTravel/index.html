@@ -7,32 +7,31 @@
   <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       
-        
+        {% if posts %}
           <div class="carousel-item active">
-              <img src="{% static 'SocialTravel/assets/puente-corrientes-resistencia.jpeg' %}">
+              <img src="{{posts.0.image_url}}"> 
             <div class="container">
               <div class="carousel-caption text-start">
-                <h1>Puente Gral. Belgrano</h1>
-                <p>Une  Chaco con Corrientes</p>
-                <p><a class="btn btn-lg btn-primary" href="https://getbootstrap.com/docs/5.0/examples/carousel/#">Sign up today</a></p>
+                <h1>{{posts.0.carousel_caption_title}}</h1>
+                <p>{{posts.0.carousel_caption_description}}</p>
               </div>
             </div>
           </div>
         
       
-        
-        <div class="carousel-item">
-          <img src="{% static 'socialtravel/assets/cataratas-del-iguazu-misiones.jpeg' %}">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>Cataratas del Iguazu</h1>
-              <p>Maravilla Natural</p>
-              <p><a class="btn btn-lg btn-primary" href="https://getbootstrap.com/docs/5.0/examples/carousel/#">Learn more</a></p>
+          {% if posts.1 %}
+            <div class="carousel-item">
+              <img src="{{posts.1.image_url}}">
+            <div class="container">
+              <div class="carousel-caption text-start">
+                <h1>{{posts.1.carousel_caption_title}}</h1>
+                <p>{{posts.1.carousel_caption_description}}</p>
+              </div>
             </div>
           </div>
-        </div>
+        {% endif %}
         
-      
+      {% endif %}
       
       
     </div>
@@ -56,20 +55,15 @@
     <!-- Three columns of text below the carousel -->
     <div class="row">
 
-    
+      {% for post in posts %}
       <div class="col-lg-4">
-        <img src="{% static 'SocialTravel/assets/puente-corrientes-resistencia.jpeg' %}" height="144" width="144">
-        <h2>El puente</h2>
-        <p>vistas lindas del rio</p>
-        <p><a class="btn btn-secondary" href="https://getbootstrap.com/docs/5.0/examples/carousel/#">View details »</a></p>
+        <img src="{{post.image_url}}" height="144" width="144">
+        <h2>{{post.heading}}</h2>
+        <p>{{post.description}}</p>
+        <p><a class="btn btn-secondary" href="{%url 'post-detail' post.id %}">View details »</a></p>
       </div><!-- /.col-lg-4 -->
     
-      <div class="col-lg-4">
-        <img src="{% static 'socialtravel/assets/cataratas-del-iguazu-misiones.jpeg' %}" height="144" width="144">
-        <h2>Las cataratas</h2>
-        <p>un destino imperdible</p>
-        <p><a class="btn btn-secondary" href="https://getbootstrap.com/docs/5.0/examples/carousel/#">View details »</a></p>
-      </div><!-- /.col-lg-4 -->
+      {% endfor %}
       
     </div><!-- /.row -->
 
