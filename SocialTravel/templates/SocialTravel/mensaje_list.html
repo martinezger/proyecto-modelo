@@ -3,6 +3,7 @@
 {% load static %}
 
  {% block principal %}
+ <div style="margin-top: 40px;">
  <h1> Mis Mensajes </h1>
 <ul>
     {%  for mensaje in mensajes  %}
@@ -14,4 +15,5 @@
     </li>
     {% endfor %}
 </ul>
+</div>
 {% endblock %}

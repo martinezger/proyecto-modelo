@@ -3,6 +3,7 @@
 {% load static %}
 
 {% block principal %}
+<div style="margin-top: 40px;">
 <p style="margin-top: 10px;">Estas seguro que quiere borrar el post {{ post.carousel_caption_title }}? </p>
 <form method="post">
     {% csrf_token %}
@@ -10,6 +11,7 @@
     <input class="btn btn-danger" type="submit" value="Borrar">
     <a class="btn btn-primary" href="{% url 'post-list' %}">Cancelar</a>
 </form>
+</div>
     
     
 {%endblock%}

@@ -3,6 +3,8 @@
 {% load static %}
 
 {% block principal %}
+<div style="margin-top: 40px;">
+
 <ul>
     {%  for post in posts  %}
     <li> {{post.id}} - {{ post.carousel_caption_title }} - {{ post.heading}}
@@ -14,4 +16,5 @@
     </li>
     {% endfor %}
 </ul>
+</div>
 {% endblock %}

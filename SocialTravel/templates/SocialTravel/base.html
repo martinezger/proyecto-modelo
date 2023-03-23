@@ -52,7 +52,7 @@
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="container-fluid">
       {%if user.profile.avatar_url %}
-        <img src="{{user.profile.image_url}}" height="144" width="144">
+        <img src="{{user.profile.avatar_url}}" height="100%" width="64px">
       {% else %}
         <a class="navbar-brand" href="https://getbootstrap.com/docs/5.0/examples/carousel/#">Carousel</a>
       {% endif %}
@@ -112,7 +112,6 @@
     </div>
   </nav>
 </header>
-
 {% block principal %}
 {% endblock %}
 
