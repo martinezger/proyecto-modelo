@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from SocialTravel.models import Post, Profile, Mensaje
-from SocialTravel.forms import PostForm
+from SocialTravel.forms import PostForm, UsuarioForm
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.views import LoginView, LogoutView
@@ -69,7 +69,7 @@ class Login(LoginView):
 
 
 class SignUp(CreateView):
-    form_class = UserCreationForm
+    form_class = UsuarioForm
     template_name = 'registration/signup.html'
     success_url = reverse_lazy('post-list')
 
